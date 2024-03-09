@@ -1,3 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
 @charset "UTF-8";
 /*!
  * Bootswatch v5.3.3 (https://bootswatch.com)
@@ -12312,3 +12313,4 @@ label,
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+/* Just like the styles downloaded from bootswatch */

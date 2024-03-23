@@ -8,6 +8,9 @@
           <div class="col">
             <h2 class="text-primary"> <strong>Categorías</strong></h2>
           </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-target="#staticBackdrop" style="float: right;" (click)="showModalForm()"> <strong>Nueva categoría</strong></button>
+          </div>
         </div>
       </div>
 
@@ -43,6 +46,56 @@
         </table>
       </div>
     </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Nueva categoría</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Region form  -->
+            
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <!-- Acronym  -->
+
+          <div class="mb-3">
+            <label for="acronym" class="form-label">Acrónimo</label>
+            <input type="text" class="form-control" formControlName="acronym" placeholder="Acrónimo de la categoría"
+              [ngClass]="{'is-invalid': form.controls['acronym'].errors && submitted}" >
+
+            @if (form.controls['acronym'].errors && submitted) {
+              <small class="input-error-message">Favor de ingresar un acrónimo válido</small>
+            }
+          </div>
+
+          <!-- Category  -->
+
+          <div class="mb-3">
+            <label for="category" class="form-label">Categoría</label>
+            <input type="text" class="form-control" formControlName="category" placeholder="Nombre de la categoría"
+              [ngClass]="{'is-invalid': form.controls['category'].errors && submitted}" >
+
+            @if (form.controls['category'].errors && submitted) {
+              <small class="input-error-message">Favor de ingresar una categoría válida</small>
+            }
+         
+          </div>
+
+          <!-- Button  -->
+
+          <div class="form-button">
+              <button type="submit" class="btn btn-primary btn-new"> <strong>Guardar</strong> </button>
+          </div>
+        
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
       
       
   </div>

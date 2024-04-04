@@ -63,7 +63,18 @@ export class CategoryComponent {
 
   getCategories(){
     //this.categories = [];
-    this.categories = this.categoryService.getCategories(); 
+    // this.categories = 
+    this.categoryService.getCategories().subscribe(
+      respuesta => {
+        this.categories=respuesta;
+      },
+        
+        error => {
+        alert("algo salió mal");
+
+        }
+
+    );
   }
 
   showModalForm(){

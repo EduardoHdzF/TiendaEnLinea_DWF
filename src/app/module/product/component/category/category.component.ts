@@ -66,7 +66,7 @@ export class CategoryComponent {
     // this.categories = 
     this.categoryService.getCategories().subscribe(
       respuesta => {
-        this.categories=respuesta;
+        this.categories=respuesta.body!;
       },
         
         error => {

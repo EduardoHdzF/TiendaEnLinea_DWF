@@ -18,10 +18,10 @@ export class CategoryService {
     
   }
   
-  getCategories(): Observable<HttpClient<Category[]>>{
-    let categories: Category[]=[];
+  getCategories(): Observable<HttpResponse<Category[]>>{
+    // let categories: Category[]=[];
 
-   return this.http.get<Category[]>(this.url + this.source);
+   return this.http.get<Category[]>(this.url + this.source, {observe: 'response'});
 
     // return categories;
 

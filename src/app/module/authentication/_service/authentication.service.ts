@@ -5,6 +5,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { User } from '../_model/user';
 import { urlApiLoginUsuario } from '../_helper/urls';
 import { LoginResponse } from '../_model/login-response';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthenticationService {
   private urlLogin = urlApiLoginUsuario;
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router) { 
     this.token = '';
     this.loggedInUsername = '';
   }
@@ -31,6 +32,7 @@ export class AuthenticationService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     localStorage.removeItem('users');
+    this.router.navigateByUrl('/login')
   }
 
   public saveToken(token: string ): void {

@@ -14,18 +14,15 @@ import { LoginResponse } from '../_model/login-response';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  usernameIcon = faUserSecret;
 
+  usernameIcon = faUserSecret;
   passwordIcon = faKey;
 
   loginForm = new FormGroup(
 
     {
-
       username: new FormControl(''),
-
       password: new FormControl('')
-
     },
 
     [Validators.required]
@@ -33,29 +30,18 @@ export class LoginComponent {
     )
 
     public showLoading: boolean;
-
     private subscriptions: Subscription[] = [];    
 
-  
-
     constructor(private router: Router, private authenticationService: AuthenticationService) {
-
       this.showLoading = false;
-
     }
-
-  
 
     ngOnInit(): void {
 
       if (this.authenticationService.isUserLoggedIn()) {
-
-        this.router.navigateByUrl('/secured/landing');
-
+        this.router.navigateByUrl('/secured');
       } else {
-
         this.router.navigateByUrl('/login');
-
       }
 
     }

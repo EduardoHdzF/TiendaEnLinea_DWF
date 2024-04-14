@@ -7,6 +7,8 @@ import { ProductModule } from './module/product/product.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationModule } from './module/authentication/authentication.module';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { jwtInterceptorInterceptor } from './core/intercetor/jwt-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { AuthenticationModule } from './module/authentication/authentication.mod
     ProductModule,
     AuthenticationModule
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([jwtInterceptorInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

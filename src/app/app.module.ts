@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationModule } from './module/authentication/authentication.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptorInterceptor } from './core/intercetor/jwt-interceptor.interceptor';
+import { CommonsModule } from './module/commons/commons.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { jwtInterceptorInterceptor } from './core/intercetor/jwt-interceptor.int
     BrowserModule,
     AppRoutingModule,
     ProductModule,
-    AuthenticationModule
+    AuthenticationModule,
+    CommonsModule
   ],
   providers: [provideHttpClient(withInterceptors([jwtInterceptorInterceptor]))],
   bootstrap: [AppComponent]

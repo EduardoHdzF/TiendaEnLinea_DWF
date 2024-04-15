@@ -20,7 +20,7 @@
     "@angular/router": "^17.2.0",
     "@auth0/angular-jwt": "^5.2.0",
     "@fortawesome/angular-fontawesome": "^0.14.1",
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",

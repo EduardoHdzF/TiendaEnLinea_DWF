@@ -24,7 +24,7 @@ export class CategoryService {
   createCategory(category:any): Observable<HttpResponse<any>>{
     return this.http.post(api_dwb_uri + this.source, category, {observe:'response'});
   }
-  updateCategory(id: number, category: any): Observable<HttpResponse<any>>{
+  updateCategory(category: any, id: number): Observable<HttpResponse<any>>{
     return this.http.put(api_dwb_uri + this.source + "/" + id, category, {observe: 'response'});
   }
   deleteCategory(id: number): Observable<HttpResponse<any>>{

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryComponent } from './module/product/component/category/category.component';
+// import { CategoryComponent } from './module/product/component/category/category.component';
+import { CategoryComponent } from './module/category/component/category/category.component';
 import { LoginComponent } from './module/authentication/login/login.component';
 import { SecuredComponent } from './module/authentication/secured/secured.component';
 import { authenticationGuard } from './module/authentication/_guard/authentication.guard';

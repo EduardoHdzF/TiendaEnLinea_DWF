@@ -19,7 +19,7 @@ export class CategoryService {
     return this.http.get<Category>(api_dwb_uri + this.source + "/" + id, { observe : 'response'});
   }
   getActiveCategories(): Observable<HttpResponse<Category[]>>{
-    return this.http.get<Category[]>(api_dwb_uri +  this.source + "/acive", {observe: 'response'});
+    return this.http.get<Category[]>(api_dwb_uri +  this.source + "/active", {observe: 'response'});
   }
   createCategory(category:any): Observable<HttpResponse<any>>{
     return this.http.post(api_dwb_uri + this.source, category, {observe:'response'});

@@ -57,9 +57,9 @@
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @if(product.status != 0){
                               <a class="dropdown-item" (click)="updateProduct(product.gtin)">
-                                <i class="ph ph-note-pencil icon-text-ul"></i>Editar
+                                <i class="ph ph-note-pencil icon-text-ul"></i>Editar 
                               </a>
-                              <a class="dropdown-item" href="/description" >
+                              <a class="dropdown-item" (click)="showDescription(product.gtin)">
                                 <i class="ph ph-note-pencil icon-text-ul"></i>Descripcion
                               </a>
                               <a class="dropdown-item disable-item" (click)="disableProduct(product.product_id)">

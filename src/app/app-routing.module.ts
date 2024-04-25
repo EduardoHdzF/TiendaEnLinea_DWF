@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: "product", component: ProductComponent},
   {path: 'login', component: LoginComponent},
   {path: 'secured', component: SecuredComponent, canActivate : [authenticationGuard]},
-  {path: 'description', component: ProductDescriptionComponent}
+  {path: 'product/:description', component: ProductDescriptionComponent}
 
 ];
 
@@ -20,4 +20,11 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
 export class AppRoutingModule { }
+
+
+
+
+

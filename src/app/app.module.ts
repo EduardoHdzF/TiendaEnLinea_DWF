@@ -10,6 +10,7 @@ import { AuthenticationModule } from './module/authentication/authentication.mod
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptorInterceptor } from './core/intercetor/jwt-interceptor.interceptor';
 import { CommonsModule } from './module/commons/commons.module';
+import { NgxPhotoEditorModule } from 'ngx-photo-editor';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommonsModule } from './module/commons/commons.module';
     AppRoutingModule,
     ProductModule,
     AuthenticationModule,
-    CommonsModule
+    CommonsModule,
+    NgxPhotoEditorModule
   ],
   providers: [provideHttpClient(withInterceptors([jwtInterceptorInterceptor]))],
   bootstrap: [AppComponent]

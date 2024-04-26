@@ -19,20 +19,14 @@
 }
 
 .card-body-images{
-    padding: 12px;
+    padding: 6px;
 }
 
 .new-image{
-    margin-top: -12px;
-    margin-bottom: 12px;
-}
-
-
-.new-image{
-    margin-top: -12px;
-    margin-bottom: 12px;
+    margin-top: -6px;
+    margin-bottom: 6px;
 }
 
 .btn-new-image{
-    float: right;
+    float: left;
 }

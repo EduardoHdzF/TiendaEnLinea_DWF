@@ -199,9 +199,3 @@ export class ProductDescriptionComponent {
   }
 
 }
-
-=======
-export class ProductDescriptionComponent {
-
-}
->>>>>>> Stashed changes

@@ -12,7 +12,11 @@ const routes: Routes = [
   {path: "product", component: ProductComponent},
   {path: 'login', component: LoginComponent},
   {path: 'secured', component: SecuredComponent, canActivate : [authenticationGuard]},
+<<<<<<< Updated upstream
   {path: 'product/:description', component: ProductDescriptionComponent}
+=======
+  {path: 'description', component: ProductDescriptionComponent}
+>>>>>>> Stashed changes
 
 ];
 

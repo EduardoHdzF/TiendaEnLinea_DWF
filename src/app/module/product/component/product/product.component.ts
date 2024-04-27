@@ -6,10 +6,13 @@ import { DtoProductList } from '../../_dto/dto-product-list';
 import { Category } from '../../_model/category';
 import { CategoryService } from '../../_service/category.service';
 import { Product } from '../../_model/product';
+<<<<<<< Updated upstream
 import { ProductImage } from '../../_model/product-image';
 import { ProductImageService } from '../../_service/product-image.service';
 import { NgxPhotoEditorService } from 'ngx-photo-editor';
 import { Router } from '@angular/router';
+=======
+>>>>>>> Stashed changes
 
 declare var $: any; // JQuery
 
@@ -50,7 +53,11 @@ export class ProductComponent {
 
   ngOnInit(){
     this.getProducts();
+<<<<<<< Updated upstream
     this.getActiveCategories();
+=======
+    this.getCategories();
+>>>>>>> Stashed changes
   }
   
  
@@ -173,6 +180,7 @@ export class ProductComponent {
   }
 
   updateProduct(gtin: string){
+<<<<<<< Updated upstream
     $("#productModal").modal("hide");
     this.productService.getProduct(gtin).subscribe({
       next: (v) => {
@@ -183,13 +191,24 @@ export class ProductComponent {
         this.form.reset();
         this.submitted = false;
 
+=======
+    this.productService.getProduct(gtin).subscribe({
+      next: (v) => {
+        let product = v.body!;
+        this.productToUpdate = product.product_id;
+        this.form.reset();
+        this.submitted = false;
+>>>>>>> Stashed changes
         this.form.controls['product'].setValue(product.product);
         this.form.controls['gtin'].setValue(product.gtin);
         this.form.controls['price'].setValue(product.price);
         this.form.controls['stock'].setValue(product.stock);
         this.form.controls['category_id'].setValue(product.category_id);
         this.form.controls['description'].setValue(product.description);
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
         $("#modalForm").modal("show");
       },
       error: (e) => {

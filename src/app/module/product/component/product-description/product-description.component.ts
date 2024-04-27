@@ -48,6 +48,9 @@ export class ProductDescriptionComponent {
     private service: NgxPhotoEditorService
   ){}
   
+  ngOnInit(){
+    this.getProducts();
+  }
   
   getProducts(){
     this.productService.getProducts().subscribe({
@@ -60,7 +63,7 @@ export class ProductDescriptionComponent {
       }
     });
   }
-  
+    
   
   onSubmit(){
     // validate form
@@ -197,3 +200,8 @@ export class ProductDescriptionComponent {
 
 }
 
+=======
+export class ProductDescriptionComponent {
+
+}
+>>>>>>> Stashed changes

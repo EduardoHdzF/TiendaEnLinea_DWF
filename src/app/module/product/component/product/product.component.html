@@ -46,6 +46,7 @@
                           </div>
                       </td>
 
+<<<<<<< Updated upstream
                       <td>
                         <div class="dropdown">
                           <!-- dots button  -->
@@ -58,6 +59,23 @@
                             @if(product.status != 0){
                               <a class="dropdown-item" (click)="updateProduct(product.gtin)">
                                 <i class="ph ph-note-pencil icon-text-ul"></i>Editar 
+=======
+                        <td>
+                          <div class="dropdown">
+                            <!-- dots button  -->
+                            <button class="dropdown-button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="ph ph-dots-three-outline-vertical icon-menu"></i>
+                            </button>
+        
+        
+                            <!-- menu options -->
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" (click)="updateProduct(product.gtin)">
+                                <i class="ph ph-note-pencil icon-text-ul"></i>Editar
+                              </a>
+                              <a class="dropdown-item">
+                                <i class="ph ph-eye icon-text-ul"></i>Ver detalles
+>>>>>>> Stashed changes
                               </a>
                               <a class="dropdown-item" (click)="showDescription(product.gtin)">
                                 <i class="ph ph-note-pencil icon-text-ul"></i>Descripcion

@@ -55,8 +55,8 @@ export class ProductComponent {
   
  
   showDescription(gtin: string){
+    console.log("Refresco ",gtin);
     this.router.navigate(['product/' + gtin]);
-    //this.getCategories();
   }
 
 

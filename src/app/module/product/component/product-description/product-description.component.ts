@@ -9,6 +9,7 @@ import { Product } from '../../_model/product';
 import { ProductImage } from '../../_model/product-image';
 import { ProductImageService } from '../../_service/product-image.service';
 import { NgxPhotoEditorService } from 'ngx-photo-editor';
+import { ActivatedRoute } from '@angular/router';
 
 declare var $: any; // JQuery
 
@@ -22,6 +23,7 @@ export class ProductDescriptionComponent {
 
   products: DtoProductList[] = []; // product list
   productToUpdate: number = 0; // product id
+  gtin: string = "";
 
   categories: Category[] = []; // category list
   images: ProductImage[] = [];
@@ -45,11 +47,23 @@ export class ProductDescriptionComponent {
     private productService: ProductService,
     private productImageService: ProductImageService,
     private formBuilder: FormBuilder,
-    private service: NgxPhotoEditorService
+    private service: NgxPhotoEditorService,
+    private route: ActivatedRoute // recupera parámetros de la url
   ){}
   
   ngOnInit(){
-    this.getProducts();
+    this.gtin = this.route.snapshot.paramMap.get('gtin')!;
+    console.log(this.gtin); 
+    // this.getProducts();
+    this.productService.getProduct(this.gtin).subscribe({
+      next: (v) => {
+        this.product = v.body!;
+      },
+      error: (e) => {
+        console.log(e);
+        this.swal.errorMessage(e.error!.message); // show message
+      }
+    });
   }
   
   getProducts(){
@@ -136,6 +150,7 @@ export class ProductDescriptionComponent {
     let productImage = new ProductImage();
     productImage.image = image;
     productImage.product_id = this.productToUpdate;
+    console.log(productImage);
     this.productImageService.createProductImage(productImage).subscribe({
       next: (v) => {
         this.swal.successMessage(v.body!.message); // show message

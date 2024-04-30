@@ -25,7 +25,7 @@ export class SwalMessages{
             text: message,
             background: '#E8F8F8',
             showConfirmButton: false,
-            timer: 2000
+            timer: 10000
         });
     }
    
@@ -38,7 +38,7 @@ export class SwalMessages{
             text: message,
             background: '#F8E8F8',
             showConfirmButton: false,
-            timer: 2000
+            timer: 10000
         });
     }
 }

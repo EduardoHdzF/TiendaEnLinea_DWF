@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: "product", component: ProductComponent},
   {path: 'login', component: LoginComponent},
   {path: 'secured', component: SecuredComponent, canActivate : [authenticationGuard]},
-  {path: 'product/:description', component: ProductDescriptionComponent}
+  {path: 'product/:gtin', component: ProductDescriptionComponent}
 ];
 
 @NgModule({

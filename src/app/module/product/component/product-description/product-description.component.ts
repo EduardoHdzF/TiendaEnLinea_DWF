@@ -149,7 +149,7 @@ export class ProductDescriptionComponent {
   createProductImage(image: string){
     let productImage = new ProductImage();
     productImage.image = image;
-    productImage.product_id = this.productToUpdate;
+    productImage.product_id = this.product.product_id//this.productToUpdate;
     console.log(productImage);
     this.productImageService.createProductImage(productImage).subscribe({
       next: (v) => {

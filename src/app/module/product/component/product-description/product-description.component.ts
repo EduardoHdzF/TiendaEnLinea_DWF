@@ -54,10 +54,11 @@ export class ProductDescriptionComponent {
   ngOnInit(){
     this.gtin = this.route.snapshot.paramMap.get('gtin')!;
     console.log(this.gtin); 
-    // this.getProducts();
+    
     this.productService.getProduct(this.gtin).subscribe({
       next: (v) => {
         this.product = v.body!;
+        this.getProductImages(this.product.product_id);
       },
       error: (e) => {
         console.log(e);
@@ -150,11 +151,13 @@ export class ProductDescriptionComponent {
     let productImage = new ProductImage();
     productImage.image = image;
     productImage.product_id = this.product.product_id//this.productToUpdate;
+    this.productToUpdate = productImage.product_id
     console.log(productImage);
     this.productImageService.createProductImage(productImage).subscribe({
       next: (v) => {
-        this.swal.successMessage(v.body!.message); // show message
+        console.log(this.productToUpdate)
         this.getProductImages(this.productToUpdate); // reload products
+        this.swal.successMessage(v.body!.message); // show message
       },
       error: (e) => {
         console.error(e);

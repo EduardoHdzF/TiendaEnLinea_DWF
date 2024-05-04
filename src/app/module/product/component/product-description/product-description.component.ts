@@ -155,7 +155,7 @@ export class ProductDescriptionComponent {
     console.log(productImage);
     this.productImageService.createProductImage(productImage).subscribe({
       next: (v) => {
-        console.log(this.productToUpdate)
+        // console.log(this.productToUpdate)
         this.getProductImages(this.productToUpdate); // reload products
         this.swal.successMessage(v.body!.message); // show message
       },

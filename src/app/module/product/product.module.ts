@@ -4,6 +4,7 @@ import { CategoryComponent } from './component/category/category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './component/product/product.component';
 import { ProductDescriptionComponent } from './component/product-description/product-description.component';
+import { HomeComponent } from './component/home/home.component';
 
 
 
@@ -11,7 +12,8 @@ import { ProductDescriptionComponent } from './component/product-description/pro
   declarations: [
     CategoryComponent,
     ProductComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

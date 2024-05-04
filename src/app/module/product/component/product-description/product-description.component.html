@@ -1,0 +1,176 @@
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="card-body-images">
+
+            <div class="row">
+            
+                            @for (image of images; track $index) {
+
+                    <div class="col-md-3">
+
+                        <div class="card card-image">
+
+                            <div class="card-body">
+
+                                <img src="{{ image.image }}" class="card-img-top" alt="...">
+
+                            </div>
+
+                            <div class="card-footer text-center">
+
+                                <button type="button" class="btn btn-danger btn-delete" (click)="deleteProductImage(image)">
+
+                                    <i class="ph ph-trash"></i>
+
+                                    Eliminar
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                }
+                
+                                    </div>
+                
+                <div class="row">
+
+              <div class="new-image">
+
+                <label for="uploadImage" class="cursor-pointer btn btn-primary btn-new btn-new-image">
+
+                  <i class="ph ph-plus-circle"></i>
+
+                  <input type="file" (change)="fileChangeHandler($event)" id="uploadImage" style="display:none">
+
+                  Agregar imagen
+
+                </label>
+
+              </div>
+
+
+
+            </div>
+        
+          </div>
+
+        
+
+    </div>
+    
+    <div class="col-4">          
+    
+              <!-- Product form  -->
+
+          <div class="row">
+
+    
+
+              <!-- product  -->
+
+    
+
+              <div class="col-md-12"> 
+
+                <div class="mb-3">
+
+                  <label class="product-label" for="product">Producto </label>
+
+                  <p>{{ product.product }}</p>
+
+                </div>
+
+              </div>
+
+              <!-- gtin  -->
+
+              <div class="col-md-12">
+
+                <div class="mb-3">
+
+                  <label class="product-label" for="gtin">GTIN </label>
+
+                  <p>{{ product.gtin }}</p>
+
+                </div>
+
+              </div>
+
+    
+
+              <!-- price  -->
+
+    
+
+              <div class="col-md-6"> 
+
+                <div class="mb-3">
+
+                  <label class="product-label" for="price">Precio </label>
+
+                  <p>{{ product.price | currency: 'USD'}}</p>
+
+                </div>
+
+              </div>
+
+    
+
+              <!-- stock  -->
+
+    
+
+              <div class="col-md-6"> 
+
+                <div class="mb-3">
+
+                  <label class="product-label" for="stock">Cantidad en stock </label>
+
+                  <p>{{ product.stock }}</p>
+
+                </div>
+
+              </div>  
+
+    
+
+              <!-- category_id  -->
+
+    
+
+              <div class="col-md-12"> 
+
+                <div class="mb-3">
+
+                  <label class="product-label" for="category_id">Categoría </label>
+
+                  <p>{{ product.category_id }}</p>
+
+                </div>
+
+              </div>
+
+    
+
+              <!-- description  -->
+
+    
+
+              <div class="mb-3">
+
+                <label class="product-label" for="description">Descripción </label>
+
+                <p>{{ product.description }}</p>
+
+              </div>
+
+          </div>
+
+    </div>
+</div>

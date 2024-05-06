@@ -11,10 +11,12 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptorInterceptor } from './core/intercetor/jwt-interceptor.interceptor';
 import { CommonsModule } from './module/commons/commons.module';
 import { NgxPhotoEditorModule } from 'ngx-photo-editor';
+import { NavbarComponent } from './module/component/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

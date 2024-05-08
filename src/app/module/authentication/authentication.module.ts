@@ -17,12 +17,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    //AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+  ],
+  exports: [
+    LoginComponent
   ]
 })
 export class AuthenticationModule { }

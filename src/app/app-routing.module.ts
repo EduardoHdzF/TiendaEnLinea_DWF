@@ -11,7 +11,7 @@ import { HomeComponent } from './module/product/component/home/home.component';
 const routes: Routes = [
   {path: "category", component: CategoryComponent},
   {path: "product", component: ProductComponent},
-  {path: 'login', component: LoginComponent},
+  //{path: 'login', component: LoginComponent},
   {path: 'secured', component: SecuredComponent, canActivate : [authenticationGuard]},
   {path: 'product/:gtin', component: ProductDescriptionComponent},
   {path: '', component: HomeComponent}

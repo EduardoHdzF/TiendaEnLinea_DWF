@@ -21,7 +21,6 @@
   left: -150%;
 }
 
-
 .nav-user-img{
   width: 32px;
 }
@@ -32,4 +31,14 @@
   vertical-align: middle;
   margin: 8px;
 }
+
+.nav-link{ 
+    cursor: pointer;
+}
+
+.nav-register{
+    margin-left: 12px;
+}
+
+
   

@@ -7,11 +7,14 @@ import { authenticationGuard } from './module/authentication/_guard/authenticati
 import { ProductComponent } from './module/product/component/product/product.component';
 import { ProductDescriptionComponent } from './module/product/component/product-description/product-description.component';
 import { HomeComponent } from './module/product/component/home/home.component';
+import { RegisterComponent } from './module/authentication/register/register.component';
+
 
 const routes: Routes = [
   {path: "category", component: CategoryComponent},
   {path: "product", component: ProductComponent},
-  //{path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'secured', component: SecuredComponent, canActivate : [authenticationGuard]},
   {path: 'product/:gtin', component: ProductDescriptionComponent},
   {path: '', component: HomeComponent}

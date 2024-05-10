@@ -25,16 +25,20 @@ export class NavbarComponent {
   loggedIn = false;
   
 
-  ngOnInit(): void {
+  /* ngOnInit(): void {
     this.getCategories();
-  }
-
-  
-/*  ngOnInit(){
     if(localStorage.getItem("token")){
       this.loggedIn = true;
     }
   } */
+
+  
+  ngOnInit(){
+  this.getCategories();
+    if(localStorage.getItem("token")){
+      this.loggedIn = true;
+    }
+  }
 
   logout(){
     this.servicioAutenticacion.logOut();
@@ -52,12 +56,12 @@ export class NavbarComponent {
     });
   }
   
-  showLoginModal(){
+  /*showLoginModal(){
     $("#loginModal").modal("show");
-  }
+  } 
 
   showRegisterModal(){
     $("#registerModal").modal("show");
-  }
+  } */
 
-}
+} 

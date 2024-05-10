@@ -13,12 +13,14 @@ import { CommonsModule } from './module/commons/commons.module';
 import { NgxPhotoEditorModule } from 'ngx-photo-editor';
 import { FooterComponent } from './module/layout/footer/footer.component';
 import { NavbarComponent } from './module/layout/navbar/navbar.component';
+import { RegisterComponent } from './module/authentication/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,9 @@ import { NavbarComponent } from './module/layout/navbar/navbar.component';
     ProductModule,
     AuthenticationModule,
     CommonsModule,
+    FormsModule,
+    FontAwesomeModule,
+    //ReactiveFormsModule,
     NgxPhotoEditorModule
   ],
   providers: [provideHttpClient(withInterceptors([jwtInterceptorInterceptor]))],

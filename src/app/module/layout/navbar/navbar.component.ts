@@ -3,6 +3,7 @@ import { AuthenticationService } from '../../authentication/_service/authenticat
 import { Category } from '../../product/_model/category';
 import { CategoryService } from '../../product/_service/category.service';
 import { SwalMessages } from '../../commons/_model/swal-messages';
+import { Router } from '@angular/router';
 
 declare var $: any; // JQuery
 
@@ -20,6 +21,7 @@ export class NavbarComponent {
   constructor(
     private categoryService: CategoryService,
     private servicioAutenticacion: AuthenticationService,
+    private router: Router
   ){}
 
   loggedIn = false;
@@ -41,7 +43,11 @@ export class NavbarComponent {
   }
 
   logout(){
+    console.log("hhhhh");
     this.servicioAutenticacion.logOut();
+    this.loggedIn = false;
+    // this.router.navigate(['login']);
+    //window.location.reload();
   }
 
   getCategories(){

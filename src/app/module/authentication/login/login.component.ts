@@ -90,9 +90,9 @@ export class LoginComponent {
 
             this.authenticationService.addUserToLocalCache(response.body);
 
-            this.router.navigateByUrl('/product');
+            // this.router.navigateByUrl('/product');
             
-            //window.location.reload();
+            window.location.reload();
 
             this.showLoading = false;
 

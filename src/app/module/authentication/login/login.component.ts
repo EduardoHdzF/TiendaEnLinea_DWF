@@ -38,11 +38,11 @@ export class LoginComponent {
 
     ngOnInit(): void {
 
-    /*  if (this.authenticationService.isUserLoggedIn()) {
+      if (this.authenticationService.isUserLoggedIn()) {
         this.router.navigateByUrl('/secured');
       } else {
         this.router.navigateByUrl('/login');
-      } */
+      }
 
     }
 
@@ -60,7 +60,7 @@ export class LoginComponent {
 
       usuario.password = loginFormValue['password'];
 
-      window.location.reload();
+      //window.location.reload();
 
       this.subscriptions.push(
 
@@ -90,7 +90,9 @@ export class LoginComponent {
 
             this.authenticationService.addUserToLocalCache(response.body);
 
-            //this.router.navigateByUrl('/secured');
+            // this.router.navigateByUrl('/product');
+            
+            window.location.reload();
 
             this.showLoading = false;
 

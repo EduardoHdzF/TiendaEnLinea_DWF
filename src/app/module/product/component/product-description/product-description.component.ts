@@ -146,7 +146,6 @@ export class ProductDescriptionComponent {
     });
   }
 
-
   createProductImage(image: string){
     let productImage = new ProductImage();
     productImage.image = image;

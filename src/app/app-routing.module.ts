@@ -8,6 +8,7 @@ import { ProductComponent } from './module/product/component/product/product.com
 import { ProductDescriptionComponent } from './module/product/component/product-description/product-description.component';
 import { HomeComponent } from './module/product/component/home/home.component';
 import { RegisterComponent } from './module/authentication/register/register.component';
+import { InvoiceComponent } from './module/invoice/component/invoice/invoice.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'secured', component: SecuredComponent, canActivate : [authenticationGuard]},
   {path: 'product/:gtin', component: ProductDescriptionComponent},
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'factura', component: InvoiceComponent}
 ];
 
 @NgModule({

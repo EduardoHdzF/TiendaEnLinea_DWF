@@ -62,6 +62,11 @@ export class NavbarComponent {
     });
   }
   
+
+  showProductCategory(category_id: number){
+    console.log("Refresco ",category_id);
+    this.router.navigate(['product/category/' + category_id]);
+  }
   /*showLoginModal(){
     $("#loginModal").modal("show");
   } 

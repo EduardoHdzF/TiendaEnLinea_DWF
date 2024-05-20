@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SwalMessages } from '../../../commons/_model/swal-messages';
 import { ProductImage } from '../../_model/product-image';
 import { ProductImageService } from '../../_service/product-image.service';
+import { DtoProductCategoryList } from '../../_dto/dto-product-category-list';
 
 declare var $: any; // JQuery
 
@@ -25,6 +26,7 @@ export class ProductCategoryComponent {
   products: DtoProductList[] = []; // product list
   categories: Category[] = []; // category list
   productToUpdate: number = 0; // product id
+  productsCat: DtoProductCategoryList[] = [];
 
   // Product form
   form = this.formBuilder.group({
@@ -51,6 +53,7 @@ export class ProductCategoryComponent {
 
   ngOnInit(): void {
     this.category_id = +this.route.snapshot.paramMap.get('category_id')!;
+    console.log(this.category_id)
     this.getProductsByCategory(this.category_id);
   }
 
@@ -77,26 +80,17 @@ export class ProductCategoryComponent {
       }
     });
   }
-  // images
-  getProductImages(id: number){
-    this.productImageService.getProductImages(id).subscribe({
-      next: (v) => {
-        this.images = v.body!;
-      },
-      error: (e) => {
-        console.log(e);
-        this.swal.errorMessage(e.error!.message); // show message
-      }
-    });
-  }
+
   showDescription(gtin: string){
     this.router.navigate(['product/' + gtin]);
   }
 
   getProductsByCategory(category_id: number): void {
+    console.log("hola");
     this.productService.getProductsByCategory(category_id).subscribe({
       next: (v) => {
-        this.products = v.body!;
+        this.productsCat = v.body!;
+        console.log(this.productsCat);
       },
       error: (e) => {
         console.log(e);

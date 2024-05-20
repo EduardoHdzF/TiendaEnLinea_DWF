@@ -5,6 +5,7 @@ import { ApiResponse } from '../../commons/_model/api-response';
 import { api_dwb_uri } from '../../../shared/uri/api-dwb-uri';
 import { Product } from '../_model/product';
 import { DtoProductList } from '../_dto/dto-product-list';
+import { DtoProductCategoryList } from '../_dto/dto-product-category-list';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,8 @@ export class ProductService {
     return this.http.get<DtoProductList[]>(api_dwb_uri + this.source, { observe: 'response' });
   }
 
-  getProductsByCategory(category_id: number): Observable<HttpResponse<DtoProductList[]>>{
-    return this.http.get<DtoProductList[]>(api_dwb_uri + this.source + "/category" + "/" + category_id, { observe: 'response' });
+  getProductsByCategory(category_id: number): Observable<HttpResponse<DtoProductCategoryList[]>>{
+    return this.http.get<DtoProductCategoryList[]>(api_dwb_uri + this.source + "/category" + "/" + category_id, { observe: 'response' });
   }
 
   updateProduct(product: any, id: number): Observable<HttpResponse<ApiResponse>> {

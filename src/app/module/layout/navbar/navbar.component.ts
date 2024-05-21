@@ -17,6 +17,8 @@ export class NavbarComponent {
 
   categories: Category[] = []; // categories list
   swal: SwalMessages = new SwalMessages(); // swal messages
+  isAdmin = false;
+  loggedIn = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -24,7 +26,6 @@ export class NavbarComponent {
     private router: Router
   ){}
 
-  loggedIn = false;
   
 
   /* ngOnInit(): void {
@@ -36,10 +37,19 @@ export class NavbarComponent {
 
   
   ngOnInit(){
-  this.getCategories();
     if(localStorage.getItem("token")){
       this.loggedIn = true;
     }
+    if(localStorage.getItem("user")){
+      let user = JSON.parse(localStorage.getItem("user")!);
+      if(user.rol == "ADMIN"){
+        this.isAdmin = true;
+      }else{
+        this.isAdmin = false;
+      }
+    }
+  this.getCategories();
+
   }
 
   logout(){
@@ -47,7 +57,7 @@ export class NavbarComponent {
     this.servicioAutenticacion.logOut();
     this.loggedIn = false;
     // this.router.navigate(['login']);
-    //window.location.reload();
+    window.location.reload();
   }
 
   getCategories(){
@@ -62,6 +72,11 @@ export class NavbarComponent {
     });
   }
   
+
+  showProductCategory(category_id: number){
+    console.log("Refresco ",category_id);
+    this.router.navigate(['product/category/' + category_id]);
+  }
   /*showLoginModal(){
     $("#loginModal").modal("show");
   } 

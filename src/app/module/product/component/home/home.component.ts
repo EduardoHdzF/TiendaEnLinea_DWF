@@ -20,7 +20,7 @@ export class HomeComponent {
   swal: SwalMessages = new SwalMessages(); // swal messages
   categories: Category[] = []; // category list
   images: ProductImage[] = [];
-  
+  imagesL: ProductImage[][] = [[]];
 
   constructor( 
     private categoryService: CategoryService,
@@ -40,6 +40,7 @@ export class HomeComponent {
     this.productService.getProducts().subscribe({
       next: (v) => {
         this.products = v.body!;
+        this.getImages();
       },
       error: (e) => {
         console.log(e);
@@ -60,10 +61,11 @@ export class HomeComponent {
     });
   }
   // images
-  getProductImages(id: number){
+  getProductImages(id: number, product: DtoProductList){
     this.productImageService.getProductImages(id).subscribe({
       next: (v) => {
         this.images = v.body!;
+        this.imagesL[product.product_id-1] = this.images;
       },
       error: (e) => {
         console.log(e);
@@ -71,7 +73,23 @@ export class HomeComponent {
       }
     });
   }
+
+  getImages(){
+    for(const product of this.products){
+      console.log(product);
+      this.getProductImages(product.product_id, product);
+      // this.imagesL.push(this.images);
+    }
+    console.log(this.imagesL);
+    // this.products.forEach((product)
+    // => {
+   
+    
+    // });
+  }
   showDescription(gtin: string){
     this.router.navigate(['product/' + gtin]);
   }
+
+  
 }

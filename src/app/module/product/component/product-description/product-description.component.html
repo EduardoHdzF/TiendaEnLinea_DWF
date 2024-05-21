@@ -1,254 +1,141 @@
 <div class="row">
   <div class="col-8">
-       <!-- product image  -->
-  <div class="row centro">
     
- <div class="col-6">
-  <div class="card">
-      <div *ngIf="images.length > 1" id="carouselExampleIndicators" class="carousel slide"
-          data-bs-ride="true">
-          <div class="carousel-indicators">
+    <!-- product image  -->
+    <div class="row centro">
+      <div class="col-6">
+        <div class="card">
+          
+          <div *ngIf="images.length > 1" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
               <button *ngFor="let item of images; let i = index" type="button" class="indicator"
-                  data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i"
-                  [class.active]="i === 0" [attr.aria-current]="i === 0"
-                  [attr.aria-label]="'Slide ' + i"></button>
-          </div>
-          <div class="carousel-inner">
-              <div *ngFor="let prod of images; let i = index" class="carousel-item"
-                  [class.active]="i === 0">
-                  <div class="carousel-del">
-                      <a (click)="deleteProductImage(prod)" class="trash"><i class="fas fa-trash-alt cursor-pointer"></i></a>
-                  </div>
-                  <img src="{{ prod.image !== '' ? prod.image : 'assets/img/no-product-image.png'}}"
-                      class="d-block w-100" alt="...">
+              data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i"
+              [class.active]="i === 0" [attr.aria-current]="i === 0"
+              [attr.aria-label]="'Slide ' + i"></button>
+            </div>
+            
+            <div class="carousel-inner">
+              <div *ngFor="let prod of images; let i = index" class="carousel-item" [class.active]="i === 0">
+                <div class="carousel-del">
+                  <a (click)="deleteProductImage(prod)" class="trash"><i class="fas fa-trash-alt cursor-pointer"></i></a>
+                </div>
+                
+                <img src="{{ prod.image !== '' ? prod.image : 'assets/img/no-product-image.png'}}" class="d-block w-100" alt="...">
               </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev">
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
+            </button>
+            
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
-          </button>
-      </div>
-      <div *ngIf="images.length <= 1" id="carouselExampleIndicators" class="carousel slide"
-          data-ride="carousel">                       
-          <div class="carousel-inner">
-              <div *ngIf="images.length == 0" class="carousel-item active">
-                  <img src="assets/img/no-product-image.png" class="d-block w-100" alt="...">
-              </div>
-              <div *ngFor="let prod of images" class="carousel-item active">
-                  <div class="carousel-del">
-                      <a (click)="deleteProductImage(prod)" class="trash"><i class="fas fa-trash-alt cursor-pointer"></i></a>
-                  </div>
-                  <img src="{{ prod.image !== '' ? prod.image : 'assets/img/no-product-image.png'}}"
-                      class="d-block w-100" alt="...">
-              </div>
+            </button>
           </div>
-      </div>
-      <div class="card-footer text-center">
-          <label for="uploadImage" class="cursor-pointer">
-              <input type="file" (change)="fileChangeHandler($event)" id="uploadImage"
-                  style="display:none">
+          
+          <div *ngIf="images.length <= 1" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div *ngIf="images.length == 0" class="carousel-item active">
+                <img src="assets/img/no-product-image.png" class="d-block w-100" alt="...">
+              </div>
+
+              <div *ngFor="let prod of images" class="carousel-item active">
+                <div class="carousel-del">
+                  <a (click)="deleteProductImage(prod)" class="trash"><i class="fas fa-trash-alt cursor-pointer"></i></a>
+                </div>
+                <img src="{{ prod.image !== '' ? prod.image : 'assets/img/no-product-image.png'}}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+          </div>
+          
+          <div class="card-footer text-center">
+            <label for="uploadImage" class="cursor-pointer">
+              <input type="file" (change)="fileChangeHandler($event)" id="uploadImage" style="display:none">
               <i class="ph ph-note-pencil icon-text-button"></i>
               <p class="item-txt"> Editar imagen </p>
-          </label>
+            </label>
+          </div>
+        </div>
+        
+        <div class="row centro">
+          <div class="new-image">
+            <label for="uploadImage" class="cursor-pointer btn btn-primary btn-new btn-new-image">
+              <i class="ph ph-plus-circle"></i>
+              <input type="file" (change)="fileChangeHandler($event)" id="uploadImage" style="display:none">
+              Agregar imagen
+            </label>
+          </div>
+        </div>
       </div>
-  </div>
-  <div class="row centro">
-
-    <div class="new-image">
-
-      <label for="uploadImage" class="cursor-pointer btn btn-primary btn-new btn-new-image">
-
-        <i class="ph ph-plus-circle"></i>
-
-        <input type="file" (change)="fileChangeHandler($event)" id="uploadImage" style="display:none">
-
-        Agregar imagen
-
-      </label>
-
     </div>
-
-
-
   </div>
-</div>
-  </div>
+  
+  <div class="col-4">
+    <!-- Product form  -->
+    <div class="row">
+      <!-- product  -->
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label class="product-label" for="product">Producto </label>
+          <p>{{ product.product }}</p>
+        </div>
+      </div>
       
-
-  </div>
-  
-  <div class="col-4">          
-  
-            <!-- Product form  -->
-
-        <div class="row">
-
-  
-
-            <!-- product  -->
-
-  
-
-            <div class="col-md-12"> 
-
-              <div class="mb-3">
-
-                <label class="product-label" for="product">Producto </label>
-
-                <p>{{ product.product }}</p>
-
-              </div>
-
-            </div>
-
-            <!-- gtin  -->
-
-            <div class="col-md-12">
-
-              <div class="mb-3">
-
-                <label class="product-label" for="gtin">GTIN </label>
-
-                <p>{{ product.gtin }}</p>
-
-              </div>
-
-            </div>
-
-  
-
-            <!-- price  -->
-
-  
-
-            <div class="col-md-6"> 
-
-              <div class="mb-3">
-
-                <label class="product-label" for="price">Precio </label>
-
-                <p>{{ product.price | currency: 'USD'}}</p>
-
-              </div>
-
-            </div>
-
-  
-
-            <!-- stock  -->
-
-  
-
-            <div class="col-md-6"> 
-
-              <div class="mb-3">
-
-                <label class="product-label" for="stock">Cantidad en stock </label>
-
-                <p>{{ product.stock }}</p>
-
-              </div>
-
-            </div>  
-
-  
-
-            <!-- category_id  -->
-
-  
-
-            <div class="col-md-12"> 
-
-              <div class="mb-3">
-
-                <label class="product-label" for="category_id">Categoría </label>
-
-                <p>{{ product.category_id }}</p>
-
-              </div>
-
-            </div>
-
-  
-
-            <!-- description  -->
-
-  
-
-            <div class="mb-3">
-
-              <label class="product-label" for="description">Descripción </label>
-
-              <p>{{ product.description }}</p>
-
-            </div>
-
+      <!-- gtin  -->
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label class="product-label" for="gtin">GTIN </label>
+          <p>{{ product.gtin }}</p>
         </div>
-
-  </div>
-</div>
-
-
-<!-- <div class="card-body-images">
-
-<div class="row">
-
-                @for (image of images; track $index) {
-
-        <div class="col-md-3">
-
-            <div class="card card-image">
-
-                <div class="card-body">
-
-                    <img src="{{ image.image }}" class="card-img-top" alt="...">
-
-                </div>
-
-                <div class="card-footer text-center">
-
-                    <button type="button" class="btn btn-danger btn-delete" (click)="deleteProductImage(image)">
-
-                        <i class="ph ph-trash"></i>
-
-                        Eliminar
-
-                    </button>
-
-                </div>
-
-            </div>
-
+      </div>
+      
+      <!-- price  -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="product-label" for="price">Precio </label>
+          <p>{{ product.price | currency: 'USD'}}</p>
         </div>
-
-    }
-    
+      </div>
+      
+      <!-- stock  -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="product-label" for="stock">Cantidad en stock </label>
+          <p>{{ product.stock }}</p>
+        </div>
+      </div>
+      
+      <!-- category_id  -->
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label class="product-label" for="category_id">Categoría </label>
+          <p>{{ product.category_id }}</p>
+        </div>
+      </div>
+      
+      <!-- description  -->
+      <div class="mb-3">
+        <label class="product-label" for="description">Descripción </label>
+        <p>{{ product.description }}</p>
+      </div>
+      
+      <!-- cantidad -->
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label class="product-label" for="quantity">Cantidad:</label>
+        </div>
+      </div>
+      
+      <div class="col-md-9">
+        <input type="number" class="form-control" id="quantity" formControlName="quantity" min="1" required>
+      </div>
+      
+      <!-- boton agregar al carrito -->
+      <!-- <button class="btn btn-primary" (click)="addToCart()">Agregar al carrito</button> -->
+      <label class="cursor-pointer btn btn-primary btn-new btn-new-image center">Agregar al carrito</label>
+    </div>
   </div>
-    
-<div class="row">
-
-  <div class="new-image">
-
-    <label for="uploadImage" class="cursor-pointer btn btn-primary btn-new btn-new-image">
-
-      <i class="ph ph-plus-circle"></i>
-
-      <input type="file" (change)="fileChangeHandler($event)" id="uploadImage" style="display:none">
-
-      Agregar imagen
-
-    </label>
-
-  </div>
-
-
 
 </div>
-
-</div> -->

@@ -10,6 +10,8 @@ import { ProductImage } from '../../_model/product-image';
 import { ProductImageService } from '../../_service/product-image.service';
 import { NgxPhotoEditorService } from 'ngx-photo-editor';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../../invoice/_service/cart.service';
+import { Cart } from '../../../invoice/_model/cart';
 
 declare var $: any; // JQuery
 
@@ -28,6 +30,8 @@ export class ProductDescriptionComponent {
   categories: Category[] = []; // category list
   images: ProductImage[] = [];
   product: Product = new Product(); // product
+
+  quantity: number = 1;
 
   // Product form
   form = this.formBuilder.group({
@@ -48,7 +52,8 @@ export class ProductDescriptionComponent {
     private productImageService: ProductImageService,
     private formBuilder: FormBuilder,
     private service: NgxPhotoEditorService,
-    private route: ActivatedRoute // recupera parámetros de la url
+    private route: ActivatedRoute, // recupera parámetros de la url
+    private cartService: CartService,
   ){}
   
   ngOnInit(){
@@ -199,6 +204,23 @@ export class ProductDescriptionComponent {
       this.createProductImage(data.base64!);
     });
   }
+
+  // addToCart() {
+  //   const cart_id: Cart = {
+  //     gtin: this.gtin,
+  //     quantity: this.quantity
+  //   };
+    
+  //   this.cartService.addToCart(cart_id).subscribe({
+  //     next: (v) => {
+  //       this.swal.successMessage('Producto agregado al carrito');
+  //     },
+  //     error: (e) => {
+  //       console.error(e);
+  //       this.swal.errorMessage(e.error!.message);
+  //     }
+  //   });
+  // }
 
   // modals 
   showProductModal(gtin: string){

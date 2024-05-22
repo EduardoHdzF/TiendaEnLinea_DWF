@@ -12,6 +12,7 @@ import { NgxPhotoEditorService } from 'ngx-photo-editor';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../invoice/_service/cart.service';
 import { Cart } from '../../../invoice/_model/cart';
+import { CartComponent } from '../../../invoice/component/cart/cart.component';
 
 declare var $: any; // JQuery
 
@@ -204,6 +205,40 @@ export class ProductDescriptionComponent {
       this.createProductImage(data.base64!);
     });
   }
+
+  // Método para agregar producto al carrito
+  addToCart(gtin: string, quantity: number) {
+    const cartItem: Cart = { 
+      gtin, 
+      quantity, 
+      cart_id: 0, // Valor por defecto
+      status: 0  // Valor por defecto
+    };
+    this.cartService.addToCart(cartItem).subscribe(
+      response => {
+        console.log('Producto agregado al carrito', response);
+        // Manejar la respuesta de la API aquí
+      },
+      error => {
+        console.error('Error al agregar producto al carrito', error);
+        // Manejar el error aquí
+      }
+    );
+  }
+
+  // addToCart(gtin: string, quantity: number) {
+  //   const cartItem: Cart = { gtin, quantity };
+  //   this.cartService.addToCart(cartItem).subscribe(
+  //     response => {
+  //       console.log('Producto agregado al carrito', response);
+  //       // Manejar la respuesta de la API aquí
+  //     },
+  //     error => {
+  //       console.error('Error al agregar producto al carrito', error);
+  //       // Manejar el error aquí
+  //     }
+  //   );
+  // }
 
   // addToCart() {
   //   const cart_id: Cart = {

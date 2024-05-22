@@ -16,6 +16,7 @@ import { NavbarComponent } from './module/layout/navbar/navbar.component';
 import { RegisterComponent } from './module/authentication/register/register.component';
 import { InvoiceComponent } from './module/invoice/component/invoice/invoice.component';
 import { CommonModule } from '@angular/common';
+import { CartComponent } from './module/invoice/component/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CommonModule } from '@angular/common';
     NavbarComponent,
     FooterComponent,
     RegisterComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

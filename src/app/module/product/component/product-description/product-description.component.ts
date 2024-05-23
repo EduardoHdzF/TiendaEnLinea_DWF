@@ -206,25 +206,38 @@ export class ProductDescriptionComponent {
     });
   }
 
-  // Método para agregar producto al carrito
-  addToCart(gtin: string, quantity: number) {
-    const cartItem: Cart = { 
-      gtin, 
-      quantity, 
-      cart_id: 0, // Valor por defecto
-      status: 0  // Valor por defecto
-    };
-    this.cartService.addToCart(cartItem).subscribe(
-      response => {
-        console.log('Producto agregado al carrito', response);
-        // Manejar la respuesta de la API aquí
+  addToCart() {
+    this.cartService.addToCart({ gtin: this.product.gtin, quantity: this.quantity }).subscribe({
+      next: (v) => {
+        this.swal.successMessage(v.body!.message); // show message
       },
-      error => {
-        console.error('Error al agregar producto al carrito', error);
-        // Manejar el error aquí
+      error: (e) => {
+        console.error(e);
+        this.swal.errorMessage(e.error!.message); // show message
       }
-    );
+    })
   }
+
+  // // Método para agregar producto al carrito
+  // addToCart(gtin: string, quantity: number) {
+  //   const cartItem: Cart = { 
+  //     gtin, 
+  //     quantity, 
+  //     cart_id: 0, // Valor por defecto
+  //     status: 0  // Valor por defecto
+  //   };
+  //   this.cartService.addToCart(cartItem).subscribe(
+  //     response => {
+  //       console.log('Producto agregado al carrito', response);
+  //       // Manejar la respuesta de la API aquí
+  //     },
+  //     error => {
+  //       console.error('Error al agregar producto al carrito', error);
+  //       // Manejar el error aquí
+  //     }
+  //   );
+  // }
+
 
   // addToCart(gtin: string, quantity: number) {
   //   const cartItem: Cart = { gtin, quantity };

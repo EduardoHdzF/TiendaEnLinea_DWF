@@ -11,6 +11,7 @@ import { ProductImageService } from '../../_service/product-image.service';
 import { NgxPhotoEditorService } from 'ngx-photo-editor';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../invoice/_service/cart.service';
+import { DtoProductCategoryList } from '../../_dto/dto-product-category-list';
 import { Cart } from '../../../invoice/_model/cart';
 import { CartComponent } from '../../../invoice/component/cart/cart.component';
 
@@ -31,6 +32,8 @@ export class ProductDescriptionComponent {
   categories: Category[] = []; // category list
   images: ProductImage[] = [];
   product: Product = new Product(); // product
+  category: Category | null = null;
+  //category: category;
 
   quantity: number = 1;
 
@@ -42,6 +45,7 @@ export class ProductDescriptionComponent {
     price: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     stock: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     category_id: [0, [Validators.required]],
+    //category: ["", [Validators.required]],
   });
   
   submitted = false; // Form submitted
@@ -218,6 +222,51 @@ export class ProductDescriptionComponent {
     })
   }
 
+  getCategories(){
+    this.categoryService.getCategories().subscribe({
+      next: (v) => {
+        this.categories = v.body!;
+      },
+      error: (e) => {
+        console.log(e);
+        this.swal.errorMessage(e.error!.message); // show message
+      }
+    });
+  }
+
+  getCategory(category_id: number) {
+  this.categoryService.getCategory(category_id).subscribe({
+    next: (v) => {
+      this.category = v.body!;
+      console.log(this.category); // or any other logic you want to perform
+    },
+    error: (e) => {
+      console.log(e);
+      this.swal.errorMessage(e.error!.message); // show message
+    }
+  });
+}
+  
+  
+  // getCategory(category_id: number) {
+  //   //console.log("hola");
+  //   this.categoryService.getCategory(category_id).subscribe({
+  //     next: (v) => {
+  //       this.category = v.body!;
+  //       //console.log(this.productCat);
+  //     },
+  //     error: (e) => {
+  //       console.log(e);
+  //       this.swal.errorMessage(e.error!.message); // show message
+  //     }
+  //   });
+  // }
+
+  //getCategory(categoryId: number): string {
+  //  const category = this.categories.find(cat => cat.category_id === categoryId);
+  //  return category ? category.category : 'Unknown Category';
+  //}
+
   // // Método para agregar producto al carrito
   // addToCart(gtin: string, quantity: number) {
   //   const cartItem: Cart = { 
@@ -268,6 +317,24 @@ export class ProductDescriptionComponent {
   //       this.swal.errorMessage(e.error!.message);
   //     }
   //   });
+  // }
+  
+  // getCategories(){
+  //   this.categoryService.getActiveCategories().subscribe({
+  //     next: (v) => {
+  //       this.categories = v.body!;
+  //     },
+  //     error: (e) => {
+  //       console.log(e);
+  //       this.swal.errorMessage(e.error!.message); // show message
+  //     }
+  //   });
+  // }
+  
+
+  // showProductCategory(category_id: number){
+  //   console.log("Refresco ",category_id);
+  //   this.router.navigate(['product/category/' + category_id]);
   // }
 
   // modals 

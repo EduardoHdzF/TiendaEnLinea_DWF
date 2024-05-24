@@ -32,7 +32,6 @@ export class ProductDescriptionComponent {
   categories: Category[] = []; // category list
   images: ProductImage[] = [];
   product: Product = new Product(); // product
-  category: Category | null = null;
   //category: category;
 
   quantity: number = 1;
@@ -59,6 +58,7 @@ export class ProductDescriptionComponent {
     private service: NgxPhotoEditorService,
     private route: ActivatedRoute, // recupera parámetros de la url
     private cartService: CartService,
+    //private category: Category,
   ){}
   
   ngOnInit(){
@@ -234,18 +234,18 @@ export class ProductDescriptionComponent {
     });
   }
 
-  getCategory(category_id: number) {
-  this.categoryService.getCategory(category_id).subscribe({
-    next: (v) => {
-      this.category = v.body!;
-      console.log(this.category); // or any other logic you want to perform
-    },
-    error: (e) => {
-      console.log(e);
-      this.swal.errorMessage(e.error!.message); // show message
-    }
-  });
-}
+  //getCategory(category_id: number) {
+  //this.categoryService.getCategory(category_id).subscribe({
+    //next: (v) => {
+      //this.category = v.body!;
+      //console.log(this.category); // or any other logic you want to perform
+    //},
+    //error: (e) => {
+      //console.log(e);
+      //this.swal.errorMessage(e.error!.message); // show message
+    //}
+  //});
+//}
   
   
   // getCategory(category_id: number) {

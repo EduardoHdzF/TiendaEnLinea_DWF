@@ -29,10 +29,12 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" routerLink="/product">Producto</a>
               <a class="dropdown-item" routerLink="/category">Categoria</a>
-              <a class="dropdown-item" routerLink="/factura">Facturas</a>
+              <!-- <a class="dropdown-item" routerLink="/factura">Facturas</a> -->
               <!--<div class="dropdown-divider"></div>-->              
             </div>
           </li>
+          }@else {
+              <a class="nav-link" routerLink="/factura">Facturas</a>
           }
         </ul>
         <form class="d-flex">
@@ -86,9 +88,12 @@
         </div>-->
         
         @if (loggedIn) {
-          <a class="nav-link" routerLink="/cart" role="button">
+          @if (isAdmin) {
+          } @else {
+              <a class="nav-link" routerLink="/cart" role="button">
             <i class="ph ph-shopping-cart i-cart"></i>
           </a>
+          }
         }@else {
           <ul class="navbar-nav">
             <a class="nav-link nav-register" routerLink="/register" >Registrarse</a>

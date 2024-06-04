@@ -34,6 +34,9 @@ export class ProductDescriptionComponent {
   product: Product = new Product(); // product
   //category: category;
 
+  isUser = false;
+  loggedIn = false;
+
   quantity: number = 1;
 
   // Product form
@@ -75,6 +78,18 @@ export class ProductDescriptionComponent {
         this.swal.errorMessage(e.error!.message); // show message
       }
     });
+
+    if(localStorage.getItem("token")){
+      this.loggedIn = true;
+    }
+    if(localStorage.getItem("user")){
+      let user = JSON.parse(localStorage.getItem("user")!);
+      if(user.rol == "USER"){
+        this.isUser = true;
+      }else{
+        this.isUser = false;
+      }
+    }
   }
   
   getProducts(){

@@ -18,6 +18,7 @@ export class SecuredComponent{
 
     console.log('Cerrando Sesión');
     this.servicioAutenticacion.logOut();
-    //this.router.navigate(['']);
+    this.router.navigate(['login']);
+    window.location.reload();
   }
 }

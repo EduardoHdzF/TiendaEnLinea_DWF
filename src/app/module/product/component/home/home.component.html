@@ -1,0 +1,85 @@
+    <!-- Header-->
+    <header>
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-black">
+                <img src="assets/images/buy.gif"/>
+                <h1 class="display-4 fw-bolder">Lo que quieras, al alcance de un click!</h1>
+                <p class="lead fw-normal text-black-50 mb-0">Las mejores ofertas</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5 cheto">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <!-- individuales -->
+                @for (product of products; track $index) {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        
+
+                        <!-- <div class="col-6"> -->
+                            <!-- <div class="card"> -->
+                                <div *ngIf="imagesL[product.product_id-1].length > 1" id="carouselExampleIndicators" class="carousel slide"
+                                    data-bs-ride="true">
+                                    <div class="carousel-indicators">
+                                        <button *ngFor="let item of imagesL[product.product_id-1]; let i = index" type="button" class="indicator"
+                                            data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i"
+                                            [class.active]="i === 0" [attr.aria-current]="i === 0"
+                                            [attr.aria-label]="'Slide ' + i"></button>  
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div *ngFor="let prod of imagesL[product.product_id-1]; let i = index" class="carousel-item"
+                                            [class.active]="i === 0">
+                                            <img src="{{ prod.image !== '' ? prod.image : 'https://media.s-bol.com/mO7MJqVMgJLA/550x550.jpg'}}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <div *ngIf="imagesL[product.product_id-1].length <= 1" id="carouselExampleIndicators" class="carousel slide"
+                                    data-ride="carousel">                       
+                                    <div class="carousel-inner">
+                                        <div *ngIf="imagesL[product.product_id-1].length == 0" class="carousel-item active">
+                                            <img src="https://media.s-bol.com/mO7MJqVMgJLA/550x550.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div *ngFor="let prod of imagesL[product.product_id-1]" class="carousel-item active">
+                                            <img src="{{ prod.image !== '' ? prod.image : 'https://media.s-bol.com/mO7MJqVMgJLA/550x550.jpg'}}"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                    </div>
+                                </div>                        
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{product.product}}</h5>
+                                <!-- Product price-->
+                                {{ product.price | currency: 'USD'}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="showDescription(product.gtin)">Detalles</a></div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+

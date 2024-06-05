@@ -10,17 +10,32 @@ import { AuthenticationModule } from './module/authentication/authentication.mod
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptorInterceptor } from './core/intercetor/jwt-interceptor.interceptor';
 import { CommonsModule } from './module/commons/commons.module';
+import { NgxPhotoEditorModule } from 'ngx-photo-editor';
+import { FooterComponent } from './module/layout/footer/footer.component';
+import { NavbarComponent } from './module/layout/navbar/navbar.component';
+import { RegisterComponent } from './module/authentication/register/register.component';
+import { InvoiceComponent } from './module/invoice/component/invoice/invoice.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    RegisterComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductModule,
     AuthenticationModule,
-    CommonsModule
+    CommonsModule,
+    FormsModule,
+    FontAwesomeModule,
+    //ReactiveFormsModule,
+    NgxPhotoEditorModule,
+    CommonModule
   ],
   providers: [provideHttpClient(withInterceptors([jwtInterceptorInterceptor]))],
   bootstrap: [AppComponent]

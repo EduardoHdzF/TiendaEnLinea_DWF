@@ -1,0 +1,49 @@
+.navbar-expand-lg{
+  position: relative;
+  width: 100%;
+
+}
+.navbar-content{
+    max-width: 1280px;
+    margin: auto;
+  }
+  
+  .navbar{
+    padding: 8px;
+}
+
+.nav-logo{
+    width: 55px;
+    height: 46px;
+
+
+    margin-right: 0px;
+    margin-left: 8px;
+}
+
+.nav-dropdown-menu-user{
+  margin-top: 9px;
+  left: -150%;
+}
+
+.nav-user-img{
+  width: 32px;
+}
+
+.i-cart{
+  color: white;
+  font-size: 28px;
+  vertical-align: middle;
+  margin: 8px;
+}
+
+.nav-link{ 
+    cursor: pointer;
+}
+
+.nav-register{
+    margin-left: 12px;
+}
+
+
+  

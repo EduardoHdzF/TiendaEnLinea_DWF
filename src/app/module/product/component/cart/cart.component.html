@@ -1,0 +1,81 @@
+<!-- <p>cart works!</p> -->
+<div class="card border-light mb-3">
+
+    <!-- Card header -->
+
+    <div class="card-header">
+      <div class="row">
+          <div class="col">
+            <h4>Carrito de compras</h4>
+          </div>
+      </div>
+    </div>
+
+    <!-- Card body -->
+
+    <div class="card-body">
+
+        <!-- Products table  -->
+      <div class="row">
+          <div class="col-9">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr class="table-primary">
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Más</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for (product of cart; track $index) {
+                      <tr>
+                      	  <td>
+                             <img class="img" src="{{product.image}}" alt={{product.gtin}} />
+                          </td>
+                          <td>
+                             {{product.product.product}}
+                          </td>
+                          <td>
+                            {{product.product.price | currency: 'USD'}}
+                          </td>
+                          <td>
+                            {{product.quantity}}
+                          </td>
+                          <td>
+                            {{(product.product.price * product.quantity | currency: 'USD')}}
+                          </td>
+                          <td>
+                            <a class="dropdown-item disable-item negritas" (click)="deleteProduct(product.product.product_id)">
+                              <i class="ph ph-trash icon-text-ul negritas"></i>Eliminar
+                            </a>
+                          </td>
+                      </tr>
+                    }
+                </tbody>
+            </table>
+          </div>
+          <div class="col-3"><div class="row">
+              <table>
+                <tbody>
+                  <tr>
+                    <div class="row">
+                    <div class="col 6">Total:</div> <div class="col-6">{{total() | currency:'USD'}}</div>
+                  </div>
+                  </tr>
+                  <tr class="centro">
+                    <button type="button" class="btn btn-dark" (click)="buy()">Comprar</button>
+                  </tr>
+                </tbody>
+              </table>
+          </div></div>
+
+        </div>
+        <button type="button" class="btn btn-danger" (click)="clearCart()">
+            <i class="ph ph-trash icon-text-ul"></i>Vaciar carrito
+        </button>
+    </div>
+</div>
+

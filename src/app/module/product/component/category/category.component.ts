@@ -89,7 +89,7 @@ export class CategoryComponent {
       },
       error: (e) => {
         console.log(e);
-        this.swal.errorMessage("Error de conexión con la base de datos"); // show message
+        this.swal.errorMessage(e.error!.message); // show message
       }
     });
   }

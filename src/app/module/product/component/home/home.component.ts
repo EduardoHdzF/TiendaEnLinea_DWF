@@ -37,7 +37,7 @@ export class HomeComponent {
   }
 
   getProducts(){
-    this.productService.getProducts().subscribe({
+    this.productService.getActiveProducts().subscribe({
       next: (v) => {
         this.products = v.body!;
         this.getImages();

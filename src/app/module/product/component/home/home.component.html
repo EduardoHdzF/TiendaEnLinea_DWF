@@ -32,7 +32,7 @@
                                     <div class="carousel-inner">
                                         <div *ngFor="let prod of imagesL[product.product_id-1]; let i = index" class="carousel-item"
                                             [class.active]="i === 0">
-                                            <img src="{{ prod.image !== '' ? prod.image : 'assets/img/no-product-image.png'}}"
+                                            <img src="{{ prod.image !== '' ? prod.image : 'https://media.s-bol.com/mO7MJqVMgJLA/550x550.jpg'}}"
                                                 class="d-block w-100" alt="...">
                                         </div>
                                     </div>
@@ -51,10 +51,10 @@
                                     data-ride="carousel">                       
                                     <div class="carousel-inner">
                                         <div *ngIf="imagesL[product.product_id-1].length == 0" class="carousel-item active">
-                                            <img src="assets/img/no-product-image.png" class="d-block w-100" alt="...">
+                                            <img src="https://media.s-bol.com/mO7MJqVMgJLA/550x550.jpg" class="d-block w-100" alt="...">
                                         </div>
                                         <div *ngFor="let prod of imagesL[product.product_id-1]" class="carousel-item active">
-                                            <img src="{{ prod.image !== '' ? prod.image : 'assets/img/no-product-image.png'}}"
+                                            <img src="{{ prod.image !== '' ? prod.image : 'https://media.s-bol.com/mO7MJqVMgJLA/550x550.jpg'}}"
                                                 class="d-block w-100" alt="...">
                                         </div>
                                     </div>

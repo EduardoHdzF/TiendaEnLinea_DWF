@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SwalMessages } from '../../../commons/_model/swal-messages';
 import { ProductService } from '../../_service/product.service';
 import { DtoProductList } from '../../_dto/dto-product-list';
@@ -41,7 +41,7 @@ export class ProductDescriptionComponent {
 
   // Product form
   form = this.formBuilder.group({
-    product: ["", [Validators.required]],
+    producto: ["", [Validators.required]],
     gtin: ["", [Validators.required, Validators.pattern('^[0-9]{13}$')]],
     description: ["", [Validators.required]],
     price: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
@@ -60,7 +60,7 @@ export class ProductDescriptionComponent {
     private formBuilder: FormBuilder,
     private service: NgxPhotoEditorService,
     private route: ActivatedRoute, // recupera parámetros de la url
-    private cartService: CartService,
+    private cartService: CartService
     //private category: Category,
   ){}
   
@@ -144,7 +144,7 @@ export class ProductDescriptionComponent {
         this.productToUpdate = product.product_id;
         this.form.reset();
         this.submitted = false;
-        this.form.controls['product'].setValue(product.product);
+        this.form.controls['producto'].setValue(product.product);
         this.form.controls['gtin'].setValue(product.gtin);
         this.form.controls['price'].setValue(product.price);
         this.form.controls['stock'].setValue(product.stock);

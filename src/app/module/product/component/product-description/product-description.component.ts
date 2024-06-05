@@ -31,12 +31,9 @@ export class ProductDescriptionComponent {
   categories: Category[] = []; // category list
   images: ProductImage[] = [];
   product: Product = new Product(); // product
-  //category: category;
 
   isUser = false;
   loggedIn = false;
-
-  // quantity: number = 0;
 
   // Product form
   form = this.formBuilder.group({
@@ -47,7 +44,6 @@ export class ProductDescriptionComponent {
     stock: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     category_id: [0, [Validators.required]],
     quantity: [1]
-    //category: ["", [Validators.required]],
   });
   
   submitted = false; // Form submitted
@@ -61,7 +57,6 @@ export class ProductDescriptionComponent {
     private service: NgxPhotoEditorService,
     private route: ActivatedRoute, // recupera parámetros de la url
     private cartService: CartService
-    //private category: Category,
   ){}
   
   ngOnInit(){
@@ -250,109 +245,6 @@ export class ProductDescriptionComponent {
       }
     });
   }
-
-  //getCategory(category_id: number) {
-  //this.categoryService.getCategory(category_id).subscribe({
-    //next: (v) => {
-      //this.category = v.body!;
-      //console.log(this.category); // or any other logic you want to perform
-    //},
-    //error: (e) => {
-      //console.log(e);
-      //this.swal.errorMessage(e.error!.message); // show message
-    //}
-  //});
-//}
-  
-  
-  // getCategory(category_id: number) {
-  //   //console.log("hola");
-  //   this.categoryService.getCategory(category_id).subscribe({
-  //     next: (v) => {
-  //       this.category = v.body!;
-  //       //console.log(this.productCat);
-  //     },
-  //     error: (e) => {
-  //       console.log(e);
-  //       this.swal.errorMessage(e.error!.message); // show message
-  //     }
-  //   });
-  // }
-
-  //getCategory(categoryId: number): string {
-  //  const category = this.categories.find(cat => cat.category_id === categoryId);
-  //  return category ? category.category : 'Unknown Category';
-  //}
-
-  // // Método para agregar producto al carrito
-  // addToCart(gtin: string, quantity: number) {
-  //   const cartItem: Cart = { 
-  //     gtin, 
-  //     quantity, 
-  //     cart_id: 0, // Valor por defecto
-  //     status: 0  // Valor por defecto
-  //   };
-  //   this.cartService.addToCart(cartItem).subscribe(
-  //     response => {
-  //       console.log('Producto agregado al carrito', response);
-  //       // Manejar la respuesta de la API aquí
-  //     },
-  //     error => {
-  //       console.error('Error al agregar producto al carrito', error);
-  //       // Manejar el error aquí
-  //     }
-  //   );
-  // }
-
-
-  // addToCart(gtin: string, quantity: number) {
-  //   const cartItem: Cart = { gtin, quantity };
-  //   this.cartService.addToCart(cartItem).subscribe(
-  //     response => {
-  //       console.log('Producto agregado al carrito', response);
-  //       // Manejar la respuesta de la API aquí
-  //     },
-  //     error => {
-  //       console.error('Error al agregar producto al carrito', error);
-  //       // Manejar el error aquí
-  //     }
-  //   );
-  // }
-
-  // addToCart() {
-  //   const cart_id: Cart = {
-  //     gtin: this.gtin,
-  //     quantity: this.quantity
-  //   };
-    
-  //   this.cartService.addToCart(cart_id).subscribe({
-  //     next: (v) => {
-  //       this.swal.successMessage('Producto agregado al carrito');
-  //     },
-  //     error: (e) => {
-  //       console.error(e);
-  //       this.swal.errorMessage(e.error!.message);
-  //     }
-  //   });
-  // }
-  
-  // getCategories(){
-  //   this.categoryService.getActiveCategories().subscribe({
-  //     next: (v) => {
-  //       this.categories = v.body!;
-  //     },
-  //     error: (e) => {
-  //       console.log(e);
-  //       this.swal.errorMessage(e.error!.message); // show message
-  //     }
-  //   });
-  // }
-  
-
-  // showProductCategory(category_id: number){
-  //   console.log("Refresco ",category_id);
-  //   this.router.navigate(['product/category/' + category_id]);
-  // }
 
   // modals 
   showProductModal(gtin: string){

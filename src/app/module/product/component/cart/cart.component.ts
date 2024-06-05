@@ -13,12 +13,6 @@ export class CartComponent {
 
   cart: DtoCartDetails[] = [];
 
-  // cartItem: Cart[] = []; // Cart list
-
-  // gtin: string = "";
-
-  // quantity: number = 1;
-
   precio: number = 0;
 
   swal: SwalMessages = new SwalMessages(); // swal messages

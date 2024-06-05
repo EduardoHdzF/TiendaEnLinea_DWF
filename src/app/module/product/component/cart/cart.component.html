@@ -21,6 +21,7 @@
             <table class="table">
                 <thead class="thead-dark">
                   <tr class="table-primary">
+                    <th>Imagen</th>
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
@@ -31,11 +32,11 @@
                 <tbody>
                     @for (product of cart; track $index) {
                       <tr>
-                          <td class="borde">
-                            <!-- <div class=" borde"> -->
+                      	  <td>
                              <img class="img" src="{{product.image}}" alt={{product.gtin}} />
-                             <label class="centro"> {{product.product.product}} </label>
-                            <!-- </div> -->
+                          </td>
+                          <td>
+                             {{product.product.product}}
                           </td>
                           <td>
                             {{product.product.price | currency: 'USD'}}

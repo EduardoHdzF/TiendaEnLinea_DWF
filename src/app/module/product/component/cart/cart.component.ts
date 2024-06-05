@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { CartService } from '../../../invoice/_service/cart.service';
-import { Cart } from '../../../invoice/_model/cart';
-import { ProductDescriptionComponent } from '../../../product/component/product-description/product-description.component';
 import { DtoCartDetails } from '../../../invoice/_dto/dto-cart-details';
 import { SwalMessages } from '../../../commons/_model/swal-messages';
+import { InvoiceService } from '../../../invoice/_service/invoice.service';
 
 @Component({
   selector: 'app-cart',
@@ -20,10 +19,13 @@ export class CartComponent {
 
   // quantity: number = 1;
 
+  precio: number = 0;
+
   swal: SwalMessages = new SwalMessages(); // swal messages
 
   constructor(
     private cartService: CartService,
+    private invoiceServide: InvoiceService
   ){}
 
   ngOnInit(){
@@ -94,6 +96,30 @@ export class CartComponent {
       const element = this.cart[index];
       precio += element.product.price;
     }
+    this.precio = precio;
     return precio;
+  }
+
+  buy(){
+    this.swal.confirmMessage.fire({
+      title: ('¿Está seguro(a) que desea efecturar la compra con un costo total de $'+ this.precio),
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar',
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.invoiceServide.generateInvoice().subscribe({
+            next: (v) => {
+              this.swal.successMessage("Su compra se ha efectuado con éxito, su pedido será enviado por estafota, gracias por confiar en nosotros.");              
+              this.getCart();
+            },
+            error: (e) => {
+              console.log(e);
+              this.swal.errorMessage(e.error!.message); // show message
+            }
+          });
+      }
+    });
   }
 }

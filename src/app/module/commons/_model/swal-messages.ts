@@ -35,7 +35,7 @@ export class SwalMessages{
             position: 'top-end',
             icon: 'error',
             toast: true,
-            text: "Error de conexion con la base de datos",
+            text: message,//"Error de conexion con la base de datos",
             background: '#F8E8F8',
             showConfirmButton: false,
             timer: 10000

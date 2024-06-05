@@ -37,7 +37,7 @@ export class ProductDescriptionComponent {
   isUser = false;
   loggedIn = false;
 
-  quantity: number = 1;
+  // quantity: number = 0;
 
   // Product form
   form = this.formBuilder.group({
@@ -47,6 +47,7 @@ export class ProductDescriptionComponent {
     price: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     stock: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     category_id: [0, [Validators.required]],
+    quantity: [1]
     //category: ["", [Validators.required]],
   });
   
@@ -66,7 +67,7 @@ export class ProductDescriptionComponent {
   
   ngOnInit(){
     this.gtin = this.route.snapshot.paramMap.get('gtin')!;
-    console.log(this.gtin); 
+    console.log(this.gtin, " redes"); 
     
     this.productService.getProduct(this.gtin).subscribe({
       next: (v) => {
@@ -95,6 +96,7 @@ export class ProductDescriptionComponent {
   getProducts(){
     this.productService.getProducts().subscribe({
       next: (v) => {
+        console.log("tamales")
         this.products = v.body!;
       },
       error: (e) => {
@@ -226,7 +228,7 @@ export class ProductDescriptionComponent {
   }
 
   addToCart() {
-    this.cartService.addToCart({ gtin: this.product.gtin, quantity: this.quantity }).subscribe({
+    this.cartService.addToCart({ gtin: this.product.gtin, quantity: this.form.get('quantity')?.value }).subscribe({
       next: (v) => {
         this.swal.successMessage(v.body!.message); // show message
       },

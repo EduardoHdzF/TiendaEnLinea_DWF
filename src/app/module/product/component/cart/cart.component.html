@@ -47,7 +47,7 @@
                             {{(product.product.price * product.quantity | currency: 'USD')}}
                           </td>
                           <td>
-                            <a class="dropdown-item disable-item negritas">
+                            <a class="dropdown-item disable-item negritas" (click)="deleteProduct(product.product.product_id)">
                               <i class="ph ph-trash icon-text-ul negritas"></i>Eliminar
                             </a>
                           </td>
@@ -56,8 +56,25 @@
                 </tbody>
             </table>
           </div>
-          <div class="col-3">ddd</div>
+          <div class="col-3"><div class="row">
+              <table>
+                <tbody>
+                  <tr>
+                    <div class="row">
+                    <div class="col 6">Total:</div> <div class="col-6">{{total() | currency:'USD'}}</div>
+                  </div>
+                  </tr>
+                  <tr class="centro">
+                    <button type="button" class="btn btn-dark">Comprar</button>
+                  </tr>
+                </tbody>
+              </table>
+          </div></div>
+
         </div>
+        <button type="button" class="btn btn-danger" (click)="clearCart()">
+            <i class="ph ph-trash icon-text-ul"></i>Vaciar carrito
+        </button>
     </div>
 </div>
 

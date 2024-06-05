@@ -25,7 +25,7 @@ export class SwalMessages{
             text: message,
             background: '#E8F8F8',
             showConfirmButton: false,
-            timer: 10000
+            timer: 6000
         });
     }
    
@@ -43,7 +43,7 @@ export class SwalMessages{
             text: message,//"Error de conexion con la base de datos",
             background: '#F8E8F8',
             showConfirmButton: false,
-            timer: 10000
+            timer: 6000
         });
     }
 }

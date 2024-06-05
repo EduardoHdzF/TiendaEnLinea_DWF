@@ -14,7 +14,7 @@ export class CartComponent {
 
   cart: DtoCartDetails[] = [];
 
-  cartItem: Cart[] = []; // Cart list
+  // cartItem: Cart[] = []; // Cart list
 
   // gtin: string = "";
 
@@ -42,11 +42,58 @@ export class CartComponent {
     });
   }
 
-  // addToCart(gtin: string, quantity: number){
-  //   const cartItem: Cart = { gtin, quantity };
-  //   this.cartService.addToCart(cartItem).subscribe(
+  deleteProduct(id: number){
+    this.swal.confirmMessage.fire({
+      title: '¿Está seguro(a) que desea eliminar el producto del carrito?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar',
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.cartService.removeFromCart(id).subscribe({
+            next: (v) => {
+              this.swal.successMessage(v.body!.message);
+              this.getCart();
+            },
+            error: (e) => {
+              console.log(e);
+              this.swal.errorMessage(e.error!.message); // show message
+            }
+          });
+      }
+    });
+  }
+  
+  clearCart(){
+    this.swal.confirmMessage.fire({
+      title: '¿Está seguro(a) que desea vaciar su carrito?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar',
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.cartService.clearCart().subscribe({
+            next: (v) => {
+              this.swal.successMessage(v.body!.message);
+              this.getCart();
+            },
+            error: (e) => {
+              console.log(e);
+              this.swal.errorMessage(e.error!.message); // show message
+            }
+          });
+      }
+    });
+  }
 
-  //   )
-  // }
-
+  total(){
+    let precio = 0;
+    for (let index = 0; index < this.cart.length; index++) {
+      const element = this.cart[index];
+      precio += element.product.price;
+    }
+    return precio;
+  }
 }

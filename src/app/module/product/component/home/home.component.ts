@@ -79,14 +79,8 @@ export class HomeComponent {
     for(const product of this.products){
       console.log("bonito ",product);
       this.getProductImages(product.product_id, product);
-      // this.imagesL.push(this.images);
     }
     console.log(this.imagesL);
-    // this.products.forEach((product)
-    // => {
-   
-    
-    // });
   }
   showDescription(gtin: string){
     this.router.navigate(['product/' + gtin]);

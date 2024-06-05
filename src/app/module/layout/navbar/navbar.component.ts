@@ -25,16 +25,6 @@ export class NavbarComponent {
     private servicioAutenticacion: AuthenticationService,
     private router: Router
   ){}
-
-  
-
-  /* ngOnInit(): void {
-    this.getCategories();
-    if(localStorage.getItem("token")){
-      this.loggedIn = true;
-    }
-  } */
-
   
   ngOnInit(){
     if(localStorage.getItem("token")){
@@ -77,12 +67,5 @@ export class NavbarComponent {
     console.log("Refresco ",category_id);
     this.router.navigate(['product/category/' + category_id]);
   }
-  /*showLoginModal(){
-    $("#loginModal").modal("show");
-  } 
-
-  showRegisterModal(){
-    $("#registerModal").modal("show");
-  } */
 
 } 

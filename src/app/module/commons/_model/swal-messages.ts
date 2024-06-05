@@ -25,20 +25,25 @@ export class SwalMessages{
             text: message,
             background: '#E8F8F8',
             showConfirmButton: false,
-            timer: 10000
+            timer: 6000
         });
     }
    
     // muestra mensaje de error
     errorMessage(message: string){
+        if(message === 'FORBIDDEN'){
+            message = "Necesita iniciar sesión";
+        }else if(message === 'El acceso al recurso no está autorizado'){
+            message = "No tiene los permisos para realizar esa acción"
+        }
         Swal.fire({
             position: 'top-end',
             icon: 'error',
             toast: true,
-            text: message,
+            text: message,//"Error de conexion con la base de datos",
             background: '#F8E8F8',
             showConfirmButton: false,
-            timer: 10000
+            timer: 6000
         });
     }
 }

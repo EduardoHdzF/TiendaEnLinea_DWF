@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SwalMessages } from '../../../commons/_model/swal-messages';
 import { ProductService } from '../../_service/product.service';
 import { DtoProductList } from '../../_dto/dto-product-list';
@@ -10,6 +10,9 @@ import { ProductImage } from '../../_model/product-image';
 import { ProductImageService } from '../../_service/product-image.service';
 import { NgxPhotoEditorService } from 'ngx-photo-editor';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../../invoice/_service/cart.service';
+import { DtoProductCategoryList } from '../../_dto/dto-product-category-list';
+import { Cart } from '../../../invoice/_model/cart';
 
 declare var $: any; // JQuery
 
@@ -29,14 +32,18 @@ export class ProductDescriptionComponent {
   images: ProductImage[] = [];
   product: Product = new Product(); // product
 
+  isUser = false;
+  loggedIn = false;
+
   // Product form
   form = this.formBuilder.group({
-    product: ["", [Validators.required]],
+    producto: ["", [Validators.required]],
     gtin: ["", [Validators.required, Validators.pattern('^[0-9]{13}$')]],
     description: ["", [Validators.required]],
     price: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     stock: [0, [Validators.required, Validators.pattern('^[0-9]*$')]],
     category_id: [0, [Validators.required]],
+    quantity: [1]
   });
   
   submitted = false; // Form submitted
@@ -48,12 +55,13 @@ export class ProductDescriptionComponent {
     private productImageService: ProductImageService,
     private formBuilder: FormBuilder,
     private service: NgxPhotoEditorService,
-    private route: ActivatedRoute // recupera parámetros de la url
+    private route: ActivatedRoute, // recupera parámetros de la url
+    private cartService: CartService
   ){}
   
   ngOnInit(){
     this.gtin = this.route.snapshot.paramMap.get('gtin')!;
-    console.log(this.gtin); 
+    console.log(this.gtin, " redes"); 
     
     this.productService.getProduct(this.gtin).subscribe({
       next: (v) => {
@@ -65,11 +73,24 @@ export class ProductDescriptionComponent {
         this.swal.errorMessage(e.error!.message); // show message
       }
     });
+
+    if(localStorage.getItem("token")){
+      this.loggedIn = true;
+    }
+    if(localStorage.getItem("user")){
+      let user = JSON.parse(localStorage.getItem("user")!);
+      if(user.rol == "USER"){
+        this.isUser = true;
+      }else{
+        this.isUser = false;
+      }
+    }
   }
   
   getProducts(){
     this.productService.getProducts().subscribe({
       next: (v) => {
+        console.log("tamales")
         this.products = v.body!;
       },
       error: (e) => {
@@ -119,7 +140,7 @@ export class ProductDescriptionComponent {
         this.productToUpdate = product.product_id;
         this.form.reset();
         this.submitted = false;
-        this.form.controls['product'].setValue(product.product);
+        this.form.controls['producto'].setValue(product.product);
         this.form.controls['gtin'].setValue(product.gtin);
         this.form.controls['price'].setValue(product.price);
         this.form.controls['stock'].setValue(product.stock);
@@ -159,7 +180,8 @@ export class ProductDescriptionComponent {
         this.swal.successMessage(v.body!.message); // show message
       },
       error: (e) => {
-        console.error(e);
+        // console.error(e);
+        // console.error(e.status);
         this.swal.errorMessage(e.error!.message); // show message
       }
     });
@@ -197,6 +219,30 @@ export class ProductDescriptionComponent {
       resizeToHeight: 360,
     }).subscribe(data => {
       this.createProductImage(data.base64!);
+    });
+  }
+
+  addToCart() {
+    this.cartService.addToCart({ gtin: this.product.gtin, quantity: this.form.get('quantity')?.value }).subscribe({
+      next: (v) => {
+        this.swal.successMessage(v.body!.message); // show message
+      },
+      error: (e) => {
+        console.error(e);
+        this.swal.errorMessage(e.error!.message); // show message
+      }
+    })
+  }
+
+  getCategories(){
+    this.categoryService.getCategories().subscribe({
+      next: (v) => {
+        this.categories = v.body!;
+      },
+      error: (e) => {
+        console.log(e);
+        this.swal.errorMessage(e.error!.message); // show message
+      }
     });
   }
 

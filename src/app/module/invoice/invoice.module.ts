@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { InvoiceComponent } from './component/invoice/invoice.component';
 
 
-
 @NgModule({
   declarations: [
-    InvoiceComponent
+    InvoiceComponent,
   ],
   imports: [
     CommonModule

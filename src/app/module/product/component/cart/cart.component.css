@@ -1,0 +1,24 @@
+.negritas{
+    font-weight: bold;
+}
+
+.negritas:hover {
+    color: black !important;
+}
+
+.img{
+    max-width: 20%;
+    /* margin: 1%; */
+}
+
+.centro{
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.borde{
+    box-sizing: border-box;
+    width: fit-content;
+    display: flex;
+}

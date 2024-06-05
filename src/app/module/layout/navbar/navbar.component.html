@@ -14,11 +14,9 @@
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorías</a>
-            <!--<a class="dropdown-item nav-dropdown-item" routerLink="/category">Categoría</a> (click)="showProductCategory(category.category_id)"-->
-            <!--<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoría</a>-->
             <div class="dropdown-menu nav-dropdown-menu">
               @for(category of categories; track category) { 
-                <a class="dropdown-item nav-dropdown-item" href="product/category/{{category.category_id}}"  >{{ category.category }}</a>
+                <a class="dropdown-item nav-dropdown-item" routerLink="product/category/{{category.category_id}}"  >{{ category.category }}</a>
               }
             </div>
           </li>
@@ -29,10 +27,10 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" routerLink="/product">Producto</a>
               <a class="dropdown-item" routerLink="/category">Categoria</a>
-              <a class="dropdown-item" routerLink="/factura">Facturas</a>
-              <!--<div class="dropdown-divider"></div>-->              
             </div>
           </li>
+          }@else {
+              <a class="nav-link" routerLink="/factura">Facturas</a>
           }
         </ul>
         <form class="d-flex">
@@ -58,9 +56,6 @@
               <!-- user options -->
  
               <div class="dropdown-menu nav-dropdown-menu nav-dropdown-menu-user">
-                  <a class="dropdown-item nav-dropdown-item" href="#">Perfil</a>
-                  <a class="dropdown-item nav-dropdown-item" href="#">Configuración</a>
-                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item nav-dropdown-item" (click)="logout()">Cerrar sesión</a>
               </div>
             </li>
@@ -71,49 +66,18 @@
 
         </ul>
         
-       <!-- <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="loginModal">
-          <div class="modal-dialog modal-dialog-centered modal-md">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Iniciar sesión</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <app-login></app-login>
-              </div>
-            </div>
-          </div>
-        </div>-->
-        
         @if (loggedIn) {
-          <a class="nav-link" href="#" role="button">
+          @if (isAdmin) {
+          } @else {
+              <a class="nav-link" routerLink="/cart" role="button">
             <i class="ph ph-shopping-cart i-cart"></i>
           </a>
+          }
         }@else {
           <ul class="navbar-nav">
             <a class="nav-link nav-register" routerLink="/register" >Registrarse</a>
           </ul>
-        }
-        
-        <!-- register modal  -->
-        <!--<div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="registerModal">
-          <div class="modal-dialog modal-dialog-centered modal-md">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Nuevo usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <app-register></app-register>
-              </div>
-            </div>
-          </div>
-        </div>-->
-        
-        <!--  <a class="nav-link" href="#" role="button">
-          <i class="ph ph-shopping-cart i-cart"></i>
-        </a>-->
-  
+        }         
 
       </div>
     </div>

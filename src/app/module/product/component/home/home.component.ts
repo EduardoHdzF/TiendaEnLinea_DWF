@@ -37,7 +37,7 @@ export class HomeComponent {
   }
 
   getProducts(){
-    this.productService.getProducts().subscribe({
+    this.productService.getActiveProducts().subscribe({
       next: (v) => {
         this.products = v.body!;
         this.getImages();
@@ -66,6 +66,7 @@ export class HomeComponent {
       next: (v) => {
         this.images = v.body!;
         this.imagesL[product.product_id-1] = this.images;
+        // console.log("chicharron ", product.product_id-1)
       },
       error: (e) => {
         console.log(e);
@@ -76,16 +77,10 @@ export class HomeComponent {
 
   getImages(){
     for(const product of this.products){
-      console.log(product);
+      console.log("bonito ",product);
       this.getProductImages(product.product_id, product);
-      // this.imagesL.push(this.images);
     }
     console.log(this.imagesL);
-    // this.products.forEach((product)
-    // => {
-   
-    
-    // });
   }
   showDescription(gtin: string){
     this.router.navigate(['product/' + gtin]);

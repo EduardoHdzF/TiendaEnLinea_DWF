@@ -31,6 +31,11 @@ export class SwalMessages{
    
     // muestra mensaje de error
     errorMessage(message: string){
+        if(message === 'FORBIDDEN'){
+            message = "Necesita iniciar sesión";
+        }else if(message === 'El acceso al recurso no está autorizado'){
+            message = "No tiene los permisos para realizar esa acción"
+        }
         Swal.fire({
             position: 'top-end',
             icon: 'error',

@@ -1,0 +1,63 @@
+<!-- <p>cart works!</p> -->
+<div class="card border-light mb-3">
+
+    <!-- Card header -->
+
+    <div class="card-header">
+      <div class="row">
+          <div class="col">
+            <h4>Carrito de compras</h4>
+          </div>
+      </div>
+    </div>
+
+    <!-- Card body -->
+
+    <div class="card-body">
+
+        <!-- Products table  -->
+      <div class="row">
+          <div class="col-9">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr class="table-primary">
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Más</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for (product of cart; track $index) {
+                      <tr>
+                          <td class="borde">
+                            <!-- <div class=" borde"> -->
+                             <img class="img" src="{{product.image}}" alt={{product.gtin}} />
+                             <label class="centro"> {{product.product.product}} </label>
+                            <!-- </div> -->
+                          </td>
+                          <td>
+                            {{product.product.price | currency: 'USD'}}
+                          </td>
+                          <td>
+                            {{product.quantity}}
+                          </td>
+                          <td>
+                            {{(product.product.price * product.quantity | currency: 'USD')}}
+                          </td>
+                          <td>
+                            <a class="dropdown-item disable-item negritas">
+                              <i class="ph ph-trash icon-text-ul negritas"></i>Eliminar
+                            </a>
+                          </td>
+                      </tr>
+                    }
+                </tbody>
+            </table>
+          </div>
+          <div class="col-3">ddd</div>
+        </div>
+    </div>
+</div>
+

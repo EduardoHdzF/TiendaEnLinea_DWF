@@ -13,7 +13,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../invoice/_service/cart.service';
 import { DtoProductCategoryList } from '../../_dto/dto-product-category-list';
 import { Cart } from '../../../invoice/_model/cart';
-import { CartComponent } from '../../../invoice/component/cart/cart.component';
 
 declare var $: any; // JQuery
 
@@ -186,7 +185,8 @@ export class ProductDescriptionComponent {
         this.swal.successMessage(v.body!.message); // show message
       },
       error: (e) => {
-        console.error(e);
+        // console.error(e);
+        // console.error(e.status);
         this.swal.errorMessage(e.error!.message); // show message
       }
     });

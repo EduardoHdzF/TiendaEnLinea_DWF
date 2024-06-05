@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CartService } from '../../_service/cart.service';
-import { Cart } from '../../_model/cart';
+import { CartService } from '../../../invoice/_service/cart.service';
+import { Cart } from '../../../invoice/_model/cart';
 import { ProductDescriptionComponent } from '../../../product/component/product-description/product-description.component';
-import { DtoCartDetails } from '../../_dto/dto-cart-details';
+import { DtoCartDetails } from '../../../invoice/_dto/dto-cart-details';
 import { SwalMessages } from '../../../commons/_model/swal-messages';
 
 @Component({
@@ -14,11 +14,11 @@ export class CartComponent {
 
   cart: DtoCartDetails[] = [];
 
-  cartItem: Cart[] = []; // Category list
+  cartItem: Cart[] = []; // Cart list
 
-  gtin: string = "";
+  // gtin: string = "";
 
-  quantity: number = 1;
+  // quantity: number = 1;
 
   swal: SwalMessages = new SwalMessages(); // swal messages
 

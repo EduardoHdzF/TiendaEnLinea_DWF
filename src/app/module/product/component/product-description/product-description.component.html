@@ -135,14 +135,9 @@
       <div class="col-md-9">
         <input type="number" class="form-control" id="quantity" formControlName="quantity" min="1" max={{product.stock}} required>
       </div>
-    
-      <!--<p *ngIf="product.stock === 0">No hay stock disponible.</p>-->
       
       <!-- boton agregar al carrito -->
-      <!-- <button class="btn btn-primary" (click)="addToCart()">Agregar al carrito</button> -->
       <label class="cursor-pointer btn btn-primary btn-new btn-new-image center"  (click)="addToCart()">Agregar al carrito</label>
-      <!-- <label class="cursor-pointer btn btn-primary btn-new btn-new-image center" (click)="addToCart(product.gtin, quantity)">Agregar al carrito</label> -->
-      <!-- <app-cart></app-cart> -->
       }}
     </form>
     </div>

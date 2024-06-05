@@ -14,12 +14,6 @@ export class CartComponent {
 
   cart: DtoCartDetails[] = [];
 
-  // cartItem: Cart[] = []; // Cart list
-
-  // gtin: string = "";
-
-  // quantity: number = 1;
-
   swal: SwalMessages = new SwalMessages(); // swal messages
 
   constructor(
